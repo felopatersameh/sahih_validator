@@ -47,10 +47,12 @@ String? validatePasswordParts( {
 
   if (input.isEmpty) {
     errors.add("Password is required.");
+    return errors.join('\n');
   }
 
   if (weakList.contains(input)) {
     errors.add("Password is too common.");
+    return errors.join('\n');
   }
 
   if (input.length < 8) {

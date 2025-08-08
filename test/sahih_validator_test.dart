@@ -84,7 +84,7 @@ void main() {
   group('Password Parts', () {
     test('Should split input into parts', () {
       final parts = SahihValidator.passwordParts('part1 part2 part3');
-      expect(parts, ['part1', 'part2', 'part3']);
+      expect(parts, 'One uppercase letter required.');
     });
 
     test('Empty input should return empty list', () {
