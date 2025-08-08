@@ -1,7 +1,7 @@
 name: sahih_validator
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/FelopaterSameh/sahih_validator
 
 environment:
   sdk: ^3.8.0
@@ -20,7 +20,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
 
   # To add assets to your package, add an assets section, like this:
   # assets:
