@@ -1,3 +1,6 @@
+## 0.0.3
+* edite in code 
+
 ## 0.0.2
 * Added address validation
 * Added urlAsync validation
