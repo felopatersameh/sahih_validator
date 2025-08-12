@@ -4,6 +4,7 @@ import 'email_validate.dart';
 import 'phone_validate.dart';
 import 'password_validate.dart';
 import 'custom_validate.dart';
+import 'url_validate.dart';
 
 class SahihValidator {
   static String? email({
@@ -164,4 +165,24 @@ class SahihValidator {
       title: title,
     );
   }
+
+static Future<T> urlAsync<T>(
+  String url, {
+  bool allowRelative = false,
+  List<String>? allowedSchemes,
+  List<String>? allowedDomains,
+  bool normalize = true,
+  bool checkDomainExists = true,
+}) async {
+  return await isValidUrlAsync<T>(
+    url,
+    allowRelative: allowRelative,
+    allowedSchemes: allowedSchemes,
+    allowedDomains: allowedDomains,
+    normalize: normalize,
+    checkDomainExists: checkDomainExists,
+  );
+}
+
+  
 }
