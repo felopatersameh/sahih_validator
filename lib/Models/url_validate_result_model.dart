@@ -8,6 +8,9 @@ class UrlValidationResult {
     required this.message,
     this.data,
   });
+  Map<String, dynamic> toJson() {
+    return {'isValid': isValid, 'message': message, 'data': data?.toJson()};
+  }
 }
 
 class UrlData {
@@ -34,5 +37,18 @@ class UrlData {
   @override
   String toString() {
     return 'UrlData(protocol: $protocol, host: $host, domain: $domain, port: $port, path: $path, query: $query, fragment: $fragment)';
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'protocol': protocol,
+      'host': host,
+      'domain': domain,
+      'port': port,
+      'path': path,
+      'query': query,
+      'fragment': fragment,
+      'fullUrl': fullUrl,
+    };
   }
 }

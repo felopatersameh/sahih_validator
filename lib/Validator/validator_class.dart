@@ -106,7 +106,7 @@ class SahihValidator {
 
   static String? address({
     required String address,
-    String? title,
+    String? title = "Address",
     String? emptyMessage,
     bool trimWhitespace = true,
     List<String>? existingAddresses,
@@ -174,7 +174,7 @@ class SahihValidator {
     List<String>? allowedSchemes,
     List<String>? allowedDomains,
     bool normalize = true,
-    bool checkDomainExists = true,
+    bool checkDomainExists = false,
   }) async {
     return await isValidUrlAsync<T>(
       url,

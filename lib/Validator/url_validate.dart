@@ -7,7 +7,7 @@ Future<T> isValidUrlAsync<T>(
   List<String>? allowedSchemes,
   List<String>? allowedDomains,
   bool normalize = true,
-  bool checkDomainExists = true,
+  bool checkDomainExists = false,
 }) async {
   UrlValidationResult result;
 
@@ -77,7 +77,7 @@ Future<T> isValidUrlAsync<T>(
           );
           return _castResult<T>(result);
         }
-      } catch (_) {
+      } catch (e) {
         result = UrlValidationResult(
           isValid: false,
           message: "Domain lookup failed",
