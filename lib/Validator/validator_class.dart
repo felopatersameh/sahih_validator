@@ -53,8 +53,11 @@ class SahihValidator {
     );
   }
 
-  static String? passwordParts(String input , { List<String>? commonPasswords}) {
-    return validatePasswordParts( input: input, commonPasswords: commonPasswords );
+  static String? passwordParts(String input, {List<String>? commonPasswords}) {
+    return validatePasswordParts(
+      input: input,
+      commonPasswords: commonPasswords,
+    );
   }
 
   static String? custom({
@@ -131,7 +134,6 @@ class SahihValidator {
     String? invalidLettersMessage,
     String? forbiddenWordsMessage,
     String? requiredWordsMessage,
-    
   }) {
     return validateAddress(
       address: address,
@@ -166,23 +168,21 @@ class SahihValidator {
     );
   }
 
-static Future<T> urlAsync<T>(
-  String url, {
-  bool allowRelative = false,
-  List<String>? allowedSchemes,
-  List<String>? allowedDomains,
-  bool normalize = true,
-  bool checkDomainExists = true,
-}) async {
-  return await isValidUrlAsync<T>(
-    url,
-    allowRelative: allowRelative,
-    allowedSchemes: allowedSchemes,
-    allowedDomains: allowedDomains,
-    normalize: normalize,
-    checkDomainExists: checkDomainExists,
-  );
-}
-
-  
+  static Future<T> urlAsync<T>(
+    String url, {
+    bool allowRelative = false,
+    List<String>? allowedSchemes,
+    List<String>? allowedDomains,
+    bool normalize = true,
+    bool checkDomainExists = true,
+  }) async {
+    return await isValidUrlAsync<T>(
+      url,
+      allowRelative: allowRelative,
+      allowedSchemes: allowedSchemes,
+      allowedDomains: allowedDomains,
+      normalize: normalize,
+      checkDomainExists: checkDomainExists,
+    );
+  }
 }

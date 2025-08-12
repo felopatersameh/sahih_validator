@@ -23,29 +23,46 @@ Future<T> isValidUrlAsync<T>(
 
     // Allow relative paths
     if (allowRelative && !uri.hasScheme && uri.path.isNotEmpty) {
-      result = UrlValidationResult(isValid: true, message: "Relative URL is valid");
+      result = UrlValidationResult(
+        isValid: true,
+        message: "Relative URL is valid",
+      );
       return _castResult<T>(result);
     }
 
     // Scheme check
     if (uri.scheme.isEmpty) {
-      result = UrlValidationResult(isValid: false, message: "URL must start with http:// or https://");
+      result = UrlValidationResult(
+        isValid: false,
+        message: "URL must start with http:// or https://",
+      );
       return _castResult<T>(result);
     }
 
-    if (allowedSchemes != null && !allowedSchemes.contains(uri.scheme.toLowerCase())) {
-      result = UrlValidationResult(isValid: false, message: "Scheme '${uri.scheme}' is not allowed");
+    if (allowedSchemes != null &&
+        !allowedSchemes.contains(uri.scheme.toLowerCase())) {
+      result = UrlValidationResult(
+        isValid: false,
+        message: "Scheme '${uri.scheme}' is not allowed",
+      );
       return _castResult<T>(result);
     }
 
     if (!uri.hasAuthority || uri.host.isEmpty) {
-      result = UrlValidationResult(isValid: false, message: "URL must have a valid domain");
+      result = UrlValidationResult(
+        isValid: false,
+        message: "URL must have a valid domain",
+      );
       return _castResult<T>(result);
     }
 
     // Domain whitelist check
-    if (allowedDomains != null && !allowedDomains.contains(uri.host.toLowerCase())) {
-      result = UrlValidationResult(isValid: false, message: "Domain '${uri.host}' is not allowed");
+    if (allowedDomains != null &&
+        !allowedDomains.contains(uri.host.toLowerCase())) {
+      result = UrlValidationResult(
+        isValid: false,
+        message: "Domain '${uri.host}' is not allowed",
+      );
       return _castResult<T>(result);
     }
 
@@ -54,11 +71,17 @@ Future<T> isValidUrlAsync<T>(
       try {
         final lookup = await InternetAddress.lookup(uri.host);
         if (lookup.isEmpty || lookup.first.rawAddress.isEmpty) {
-          result = UrlValidationResult(isValid: false, message: "Domain does not exist");
+          result = UrlValidationResult(
+            isValid: false,
+            message: "Domain does not exist",
+          );
           return _castResult<T>(result);
         }
       } catch (_) {
-        result = UrlValidationResult(isValid: false, message: "Domain lookup failed");
+        result = UrlValidationResult(
+          isValid: false,
+          message: "Domain lookup failed",
+        );
         return _castResult<T>(result);
       }
     }
@@ -74,11 +97,17 @@ Future<T> isValidUrlAsync<T>(
       fullUrl: normalize ? _normalizeUrl(uri) : trimmedUrl,
     );
 
-    result = UrlValidationResult(isValid: true, message: "URL is valid", data: urlData);
+    result = UrlValidationResult(
+      isValid: true,
+      message: "URL is valid",
+      data: urlData,
+    );
     return _castResult<T>(result);
-
   } catch (e) {
-    result = UrlValidationResult(isValid: false, message: "URL format is invalid");
+    result = UrlValidationResult(
+      isValid: false,
+      message: "URL format is invalid",
+    );
     return _castResult<T>(result);
   }
 }
@@ -86,11 +115,9 @@ Future<T> isValidUrlAsync<T>(
 T _castResult<T>(UrlValidationResult result) {
   if (T == String) {
     return result.message as T;
-  }
-  else if (T == bool) {
+  } else if (T == bool) {
     return result.isValid as T;
   }
-
 
   return result as T;
 }

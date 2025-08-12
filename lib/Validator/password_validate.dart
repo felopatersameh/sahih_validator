@@ -6,14 +6,13 @@ String? validateLoginPassword({
   required String password,
   String? emptyMessage,
 }) {
-
   if (password.isEmpty) {
     return emptyMessage ?? "Please enter your password.";
   }
   return null;
 }
 
-String? validatePasswordParts( {
+String? validatePasswordParts({
   required String input,
   List<String>? commonPasswords,
 }) {
@@ -60,5 +59,3 @@ String? validatePasswordParts( {
 
   return errors.isEmpty ? null : errors.join('\n');
 }
-
-

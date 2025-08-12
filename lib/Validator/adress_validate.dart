@@ -1,9 +1,8 @@
 import '../Extensions/address_validation_extensions.dart';
 
-
 String? validateAddress({
   required String address,
-  String ? title = "Address",
+  String? title = "Address",
   bool trimWhitespace = true,
   bool isRequired = true,
   int minLength = 10,
@@ -21,7 +20,7 @@ String? validateAddress({
   String? emptyMessage,
   String? minLengthMessage,
   String? maxLengthMessage,
-  String? missingStreetNumberMessage, 
+  String? missingStreetNumberMessage,
   String? missingStreetNameMessage,
   String? missingCityMessage,
   String? missingCountryMessage,
@@ -40,7 +39,8 @@ String? validateAddress({
   if (!isRequired && value.isEmpty) return null;
 
   if (value.length < minLength) {
-    return minLengthMessage ?? "$title must be at least $minLength characters long";
+    return minLengthMessage ??
+        "$title must be at least $minLength characters long";
   }
   if (value.length > maxLength) {
     return maxLengthMessage ?? "$title cannot exceed $maxLength characters";
@@ -53,7 +53,8 @@ String? validateAddress({
     return invalidLettersMessage ?? "$title must contain letters";
   }
   if (!allowSpecialChars && value.containsSpecialChars) {
-    return invalidSpecialCharsMessage ?? "$title cannot contain special characters";
+    return invalidSpecialCharsMessage ??
+        "$title cannot contain special characters";
   }
 
   if (requireStreetNumber && !value.hasStreetNumber) {

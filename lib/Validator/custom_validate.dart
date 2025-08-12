@@ -37,11 +37,13 @@ String? customValidate({
   }
 
   if (minLength != null && input.length < minLength) {
-    return minLengthMessage ?? "$fieldName must be at least $minLength characters long.";
+    return minLengthMessage ??
+        "$fieldName must be at least $minLength characters long.";
   }
 
   if (maxLength != null && input.length > maxLength) {
-    return maxLengthMessage ?? "$fieldName must be at most $maxLength characters long.";
+    return maxLengthMessage ??
+        "$fieldName must be at most $maxLength characters long.";
   }
 
   if (allowOnlyNumbers && !RegExp(r'^\d+$').hasMatch(input)) {

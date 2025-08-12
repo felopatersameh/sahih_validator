@@ -1,15 +1,12 @@
-enum PatternType {
-  email,
-  phone,
-  number,
-  strongPassword,
-}
+enum PatternType { email, phone, number, strongPassword }
 
 extension PatternTypeExtension on PatternType {
   bool isValid(String input) {
     switch (this) {
       case PatternType.email:
-        return RegExp(r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$').hasMatch(input);
+        return RegExp(
+          r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$',
+        ).hasMatch(input);
       case PatternType.phone:
         return RegExp(r'^\+?[0-9]{10,15}$').hasMatch(input);
       case PatternType.number:
