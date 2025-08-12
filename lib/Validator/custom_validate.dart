@@ -1,5 +1,25 @@
 import '../Extensions/pattern_type.dart';
 
+/// Provides comprehensive custom validation with multiple configurable rules.
+///
+/// Flexible validation allowing combination of multiple rules. Ideal for usernames,
+/// product codes, or any field with specific requirements.
+///
+/// Validation order: required check, existing values, length, character restrictions,
+/// pattern matching, custom function.
+///
+/// Parameters:
+/// * [value]: The input value to validate
+/// * [title]: Field name for error messages (default: "Field")
+/// * [trimWhitespace]: Whether to trim whitespace (default: true)
+/// * [isRequired]: Whether the field is required (default: true)
+/// * [minLength], [maxLength]: Length constraints
+/// * [pattern]: Custom regex pattern
+/// * [patternType]: Predefined pattern from PatternType enum
+/// * [allowOnlyNumbers], [allowOnlyLetters]: Character type restrictions
+/// * [customValidator]: Custom validation function
+/// * [existingValues]: List of existing values to check against
+/// * Various message parameters for customizing error messages
 String? customValidate({
   required String value,
   String? title,

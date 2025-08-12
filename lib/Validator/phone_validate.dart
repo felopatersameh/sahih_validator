@@ -1,5 +1,7 @@
 import '../Extensions/pattern_type.dart';
 
+/// Validates phone number format (10-15 digits, optional +).
+/// Returns null if valid, error message if invalid.
 String? validatePhone({
   required String phone,
   String? emptyMessage,

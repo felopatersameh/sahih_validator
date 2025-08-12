@@ -1,5 +1,7 @@
 import '../Extensions/address_validation_extensions.dart';
 
+/// Validates address with component requirements and content filtering.
+/// Returns null if valid, error message if invalid.
 String? validateAddress({
   required String address,
   String? title = "Address",

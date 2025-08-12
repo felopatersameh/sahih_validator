@@ -2,6 +2,14 @@ import 'dart:math';
 
 import '../Extensions/password_validate_extension.dart';
 
+/// Validates a password for login purposes by checking if it's not empty.
+///
+/// Simple validation for login forms. For password strength validation
+/// during registration, use [validatePasswordParts] instead.
+///
+/// Parameters:
+/// * [password]: The password to validate
+/// * [emptyMessage]: Custom message when empty
 String? validateLoginPassword({
   required String password,
   String? emptyMessage,
@@ -12,6 +20,20 @@ String? validateLoginPassword({
   return null;
 }
 
+/// Validates password strength with comprehensive security requirements.
+///
+/// Performs detailed password strength analysis including character diversity,
+/// length validation, entropy calculation, and checks against common weak passwords.
+///
+/// Requirements: 8+ characters, uppercase, lowercase, digit, not only numbers,
+/// not a common password, sufficient entropy.
+///
+/// Returns `null` for strong passwords, or detailed error messages listing all
+/// validation failures (separated by newlines).
+///
+/// Parameters:
+/// * [input]: The password to validate
+/// * [commonPasswords]: Optional list of passwords to reject
 String? validatePasswordParts({
   required String input,
   List<String>? commonPasswords,

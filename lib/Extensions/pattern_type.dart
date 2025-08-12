@@ -1,6 +1,21 @@
-enum PatternType { email, phone, number, strongPassword }
+/// Predefined regex patterns for common validation types.
+enum PatternType {
+  /// Email address pattern
+  email,
 
+  /// Phone number pattern
+  phone,
+
+  /// Numeric only pattern
+  number,
+
+  /// Strong password pattern
+  strongPassword,
+}
+
+/// Extension providing validation methods for PatternType enum.
 extension PatternTypeExtension on PatternType {
+  /// Validates input string against the pattern type.
   bool isValid(String input) {
     switch (this) {
       case PatternType.email:

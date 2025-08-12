@@ -1,6 +1,8 @@
 import 'dart:io';
 import '../Models/url_validate_result_model.dart';
 
+/// Validates URLs with format checking and domain restrictions.
+/// Returns String/bool/UrlValidationResult based on generic type T.
 Future<T> isValidUrlAsync<T>(
   String url, {
   bool allowRelative = false,

@@ -1,3 +1,4 @@
+/// Calculates character set size for password entropy.
 int calculateCharsetSize(String input) {
   bool hasLower = RegExp(r'[a-z]').hasMatch(input);
   bool hasUpper = RegExp(r'[A-Z]').hasMatch(input);
@@ -13,6 +14,7 @@ int calculateCharsetSize(String input) {
   return size;
 }
 
+/// List of common weak passwords to reject.
 const weakPasswords = [
   '',
   'password',
