@@ -1,6 +1,6 @@
 name: sahih_validator
 description: "Flutter validation library for emails, phones, passwords, addresses, URLs, and custom fields with form integration"
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/FelopaterSameh/sahih_validator
 documentation: https://pub.dev/documentation/sahih_validator/latest/
 
