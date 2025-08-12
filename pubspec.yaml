@@ -1,6 +1,6 @@
 name: sahih_validator
 description: "A comprehensive and easy-to-use Flutter validation library"
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/FelopaterSameh/sahih_validator
 
 environment:
