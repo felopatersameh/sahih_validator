@@ -1,4 +1,5 @@
 import 'dart:io' if (dart.library.js) 'stub_for_web.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../Models/url_validate_result_model.dart';
 
 /// Validates URLs with format checking and domain restrictions.
@@ -68,8 +69,8 @@ Future<T> isValidUrlAsync<T>(
       return _castResult<T>(result);
     }
 
-    // Optional DNS check
-    if (checkDomainExists) {
+    // Optional DNS check (not supported on web platforms)
+    if (checkDomainExists && !kIsWeb) {
       try {
         final lookup = await InternetAddress.lookup(uri.host);
         if (lookup.isEmpty || lookup.first.rawAddress.isEmpty) {
