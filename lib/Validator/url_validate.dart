@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.js) 'stub_for_web.dart';
 import '../Models/url_validate_result_model.dart';
 
 /// Validates URLs with format checking and domain restrictions.
