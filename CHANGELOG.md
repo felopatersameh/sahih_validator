@@ -1,3 +1,7 @@
+## 0.0.5
+* Clean code testing
+* Added DateOfBirth Validator
+
 ## 0.0.4
 * Fixed WASM compatibility for web platforms
 * Added conditional imports for dart:io

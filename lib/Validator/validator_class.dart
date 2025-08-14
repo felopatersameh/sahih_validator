@@ -1,5 +1,6 @@
 import '../Extensions/pattern_type.dart';
 import 'adress_validate.dart';
+import 'date_of_birth_validator.dart';
 import 'email_validate.dart';
 import 'phone_validate.dart';
 import 'password_validate.dart';
@@ -487,6 +488,33 @@ class SahihValidator {
       allowedDomains: allowedDomains,
       normalize: normalize,
       checkDomainExists: checkDomainExists,
+    );
+  }
+
+  ///
+  static String? dateOfBirth({
+    required String dob,
+    String format = "yyyy-MM-dd",
+    int minAgeYears = 18,
+    int maxAgeYears = 120,
+    int? minAgeDays,
+    bool useUtc = false,
+    String? invalidFormatMessage,
+    String? futureDateMessage,
+    String? tooYoungMessage,
+    String? tooOldMessage,
+  }) {
+    return DateOfBirthValidator.validate(
+      dob,
+      format: format,
+      minAgeYears: minAgeYears,
+      maxAgeYears: maxAgeYears,
+      minAgeDays: minAgeDays,
+      invalidFormatMessage: invalidFormatMessage,
+      futureDateMessage: futureDateMessage,
+      tooYoungMessage: tooYoungMessage,
+      tooOldMessage: tooOldMessage,
+      useUtc: useUtc,
     );
   }
 }

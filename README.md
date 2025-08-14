@@ -1,24 +1,28 @@
 # SahihValidator 🔐
 
-A comprehensive and powerful Flutter validation library that provides robust validation for emails, phone numbers, passwords, addresses, URLs, and custom fields with excellent form integration.
+A comprehensive and powerful Flutter validation library that provides robust validation
 
 ## Table of Contents 📋
 
-- [Features](#features-)
-- [Quick Start](#quick-start-)
-- [Detailed Usage Guide](#detailed-usage-guide-)
-  - [1. Email Validation](#1-email-validation-)
-  - [2. Phone Number Validation](#2-phone-number-validation-)
-  - [3. Password Validation](#3-password-validation-)
-  - [4. Address Validation](#4-address-validation-)
-  - [5. URL Validation](#5-url-validation-)
-  - [6. Custom Validation](#6-custom-validation-️)
-- [Common Parameters](#common-parameters-)
-- [Form Integration](#form-integration-)
-- [Best Practices](#best-practices-)
-- [Contributing](#contributing-)
-- [License](#license-)
-- [Support](#support-)
+- [SahihValidator 🔐](#sahihvalidator-)
+  - [Table of Contents 📋](#table-of-contents-)
+  - [Features ✨](#features-)
+  - [Detailed Usage Guide 📖](#detailed-usage-guide-)
+    - [1. Email Validation 📧](#1-email-validation-)
+    - [2. Phone Number Validation 📱](#2-phone-number-validation-)
+    - [3. Password Validation 🔒](#3-password-validation-)
+      - [Simple Login Password Validation](#simple-login-password-validation)
+      - [Password Strength Validation](#password-strength-validation)
+    - [4. Address Validation 🏠](#4-address-validation-)
+    - [5. URL Validation 🌐](#5-url-validation-)
+    - [6. Custom Validation ⚙️](#6-custom-validation-️)
+    - [7. Date of Birth Validation 🎂](#7-date-of-birth-validation-)
+  - [Form Integration 📝](#form-integration-)
+    - [Basic Form Integration](#basic-form-integration)
+  - [Best Practices 💡](#best-practices-)
+  - [Contributing 🤝](#contributing-)
+  - [License 📄](#license-)
+  - [Support 💬](#support-)
 
 ## Features ✨
 
@@ -32,34 +36,6 @@ A comprehensive and powerful Flutter validation library that provides robust val
 - **🌍 Internationalization**: Customizable error messages for all validation types
 - **🎯 Type Safety**: Full Dart type safety with comprehensive error handling
 
-## Quick Start 🚀
-
-Import the package:
-
-```dart
-import 'package:sahih_validator/sahih_validator.dart';
-```
-
-Basic usage example:
-
-```dart
-// Email validation
-String? emailError = SahihValidator.email(email: "user@example.com");
-
-// Phone validation
-String? phoneError = SahihValidator.phone(phone: "+1234567890");
-
-// Password strength validation
-String? passwordError = SahihValidator.passwordParts("MySecureP@ssw0rd!");
-
-// Custom validation
-String? usernameError = SahihValidator.custom(
-  value: "john_doe",
-  minLength: 3,
-  maxLength: 20,
-  pattern: r'^[a-zA-Z0-9_]+$',
-);
-```
 
 ## Detailed Usage Guide 📖
 
@@ -92,7 +68,7 @@ String? emailError = SahihValidator.email(
 - `user@` (missing domain)
 - `user@domain` (missing TLD)
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L54)** | **[View Tests](test/sahih_validator_test.dart#L8)**
+
 
 ### 2. Phone Number Validation 📱
 
@@ -122,7 +98,7 @@ String? phoneError = SahihValidator.phone(
 - `(123) 456-7890` (contains spaces and parentheses)
 - `abcdefghij` (contains letters)
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L100)** | **[View Tests](test/sahih_validator_test.dart#L130)**
+
 
 ### 3. Password Validation 🔒
 
@@ -137,7 +113,7 @@ String? loginError = SahihValidator.loginPassword(
 );
 ```
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L127)** | **[View Tests](test/sahih_validator_test.dart#L287)**
+
 
 #### Password Strength Validation
 
@@ -160,7 +136,6 @@ String? strengthError = SahihValidator.passwordParts(
 - Cannot be a common/weak password
 - Must have sufficient entropy (complexity)
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L166)** | **[View Tests](test/sahih_validator_test.dart#L295)**
 
 ### 4. Address Validation 🏠
 
@@ -181,7 +156,6 @@ String? addressError = SahihValidator.address(
 );
 ```
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L280)** | **[View Tests](test/sahih_validator_test.dart#L340)**
 
 ### 5. URL Validation 🌐
 
@@ -211,7 +185,6 @@ bool isValidRestricted = await SahihValidator.urlAsync<bool>(
 );
 ```
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L383)** | **[View Tests](test/sahih_validator_test.dart#L451)**
 
 ### 6. Custom Validation ⚙️
 
@@ -241,54 +214,20 @@ String? productCodeError = SahihValidator.custom(
 );
 ```
 
-**→ [View Implementation](lib/Validator/validator_class.dart#L205)** | **[View Tests](test/sahih_validator_test.dart#L390)**
 
-## Common Parameters 🔧
 
-Many validation methods share these common parameters:
+### 7. Date of Birth Validation 🎂
 
-### trimWhitespace (bool)
-
-**Default**: `true`
-
-Removes leading and trailing whitespace from input before validation:
+The `DateOfBirthValidator` checks if the provided date is a valid date and if the user is of a certain age:
 
 ```dart
-// With trimming (default)
-SahihValidator.email(
-  email: "  user@example.com  ", // Becomes "user@example.com"
-  trimWhitespace: true,
-); // Returns null (valid)
-
-// Without trimming
-SahihValidator.email(
-  email: "  user@example.com  ", // Stays "  user@example.com  "
-  trimWhitespace: false,
-); // Returns error (invalid format)
+String? dobError = SahihValidator.dateOfBirth(
+  date: DateTime(2000, 1, 1), // Example date
+  minAge: 18, // Minimum age requirement
+  invalidDateMessage: "Please enter a valid date",
+  underAgeMessage: "You must be at least 18 years old",
+);
 ```
-
-### existingValues/existingEmails/existingPhones (`List<String>?`)
-
-**Default**: `null`
-
-Lists of values that already exist in your system. Validation fails if input matches any existing value:
-
-```dart
-SahihValidator.email(
-  email: "admin@site.com",
-  existingEmails: ["admin@site.com", "user@site.com"],
-  alreadyExistsMessage: "This email is already registered",
-); // Returns "This email is already registered"
-```
-
-### Custom Error Messages
-
-All validation methods accept custom error message parameters:
-
-- `emptyMessage`: When the field is empty
-- `invalidFormatMessage`: When the format is invalid
-- `alreadyExistsMessage`: When the value already exists
-- Method-specific messages (e.g., `minLengthMessage`, `maxLengthMessage`)
 
 ## Form Integration 📝
 
@@ -343,3 +282,4 @@ MIT License
 ## Support 💬
 
 For questions or support, please open an issue on GitHub.
+  
