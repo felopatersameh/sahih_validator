@@ -73,7 +73,7 @@ Future<T> isValidUrlAsync<T>(
     if (checkDomainExists && !kIsWeb) {
       try {
         final lookup = await InternetAddress.lookup(uri.host);
-        if (lookup.isEmpty || lookup.first.rawAddress.isEmpty) {
+        if (lookup.isEmpty || lookup.first.address.isEmpty) {
           result = UrlValidationResult(
             isValid: false,
             message: "Domain does not exist",

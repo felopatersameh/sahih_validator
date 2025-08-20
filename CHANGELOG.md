@@ -1,3 +1,6 @@
+## 0.0.6
+* Enhance web compatibility for InternetAddress stub and update URL validation logic
+
 ## 0.0.5
 * Clean code testing
 * Added DateOfBirth Validator
